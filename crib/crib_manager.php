@@ -3,25 +3,24 @@
 class crib_space
 {
     public $crib_animbals;
-    const UNDEFINED_ANIMAL_TYPE_ERROR = 'undefined type of animal';
 
-    function __construct()
+    public function __construct()
     {
         $this->crib_animbals = [];
     }
 
-    function add_animal($type)
+    public function add_animal($type)
     {
         if ($type === 'cow') {
             array_push($this->crib_animbals, new cow());
         } else if ($type === 'chicken') {
             array_push($this->crib_animbals, new chicken());
         } else {
-            echo UNDEFINED_ANIMAL_TYPE_ERROR;
+            echo 'undefined type of animal';
         }
     }
 
-    function add_animals($number, $type)
+    public function add_animals($number, $type)
     {
         if ($type === 'cow') {
             for ($i = 0; $i < $number; $i++) {
@@ -32,11 +31,11 @@ class crib_space
                 array_push($this->crib_animbals, new chicken());
             }
         } else {
-            echo UNDEFINED_ANIMAL_TYPE_ERROR;
+            echo 'undefined type of animal';
         }
     }
 
-    function list_all_animals()
+    public function list_all_animals()
     {
         for ($i = 0; $i < count($this->crib_animbals); $i++) {
             $current_animal = $this->crib_animbals[$i];
@@ -44,7 +43,7 @@ class crib_space
         }
     }
 
-    function get_total_animals_number()
+    public function get_total_animals_number()
     {
         $total_of_crib_animals = count($this->crib_animbals);
         echo ($total_of_crib_animals . ' - total number of animals in crib');

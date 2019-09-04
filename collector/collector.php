@@ -4,7 +4,7 @@ class collector
 {
     public $animals_processed, $successfully_processed_animals, $eggs_number_received, $milk_litres_received;
 
-    function __construct()
+    public function __construct()
     {
         $this->animals_processed = 0;
         $this->successfully_processed_animals = 0;
@@ -12,7 +12,7 @@ class collector
         $this->milk_litres_received = 0;
     }
 
-    function process_animal($animal)
+    public function process_animal($animal)
     {
         $this->animals_processed++;
         if ($animal->isViandReceived === false) {
@@ -29,7 +29,7 @@ class collector
         }
     }
 
-    function process_all_animals_in_crib($crib_space)
+    public function process_all_animals_in_crib($crib_space)
     {
         $this->animals_processed = 0;
         for ($i = 0; $i < count($crib_space->crib_animbals); $i++) {
@@ -39,7 +39,7 @@ class collector
     }
 
 
-    function get_process_info()
+    public function get_process_info()
     {
         echo "Animals processed: $this->animals_processed ;\nAnimals successfully processed: $this->successfully_processed_animals ;\nEggs received:  $this->eggs_number_received ;\nMilk litres received: $this->milk_litres_received ;\n";
     }
