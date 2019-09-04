@@ -20,10 +20,6 @@ echo "Type YES to stop system.\n";
 $handle = fopen("php://stdin", "r");
 $line = fgets($handle);
 
-if (trim($line) != 'yes') {
-    echo "STOPPING!\n";
-    exit;
-}
 fclose($handle);
 echo "\n";
-echo "Thank you...\n";
+echo "Stopping system. Thank you...\n";
