@@ -9,31 +9,28 @@ class crib_space
         $this->crib_animbals = [];
     }
 
-    public function add_animal($type)
+    public function add_animal($type, $animal_possible_min_viand  = 0, $animal_possible_max_viand = 0)
     {
-        if ($type === 'cow') {
-            array_push($this->crib_animbals, new cow());
-        } else if ($type === 'chicken') {
-            array_push($this->crib_animbals, new chicken());
-        } else {
-            echo 'undefined type of animal';
+        if($type){
+            if (class_exists('new '.$type) || class_exists($type)) {
+                array_push($this->crib_animbals, new $type($animal_possible_min_viand,  $animal_possible_max_viand));
+            }else{
+                array_push($this->crib_animbals, new animal($type, $animal_possible_min_viand,  $animal_possible_max_viand));
+            }
+        }else{
+            echo 'no type selected';
         }
     }
 
-    public function add_animals($number, $type)
+    public function add_animals($number, $type, $animal_possible_min_viand = 0, $animal_possible_max_viand = 0 )
     {
-        if ($type === 'cow') {
-            for ($i = 0; $i < $number; $i++) {
-                array_push($this->crib_animbals,  new cow());
-            }
-        } else if ($type === 'chicken') {
-            for ($i = 0; $i < $number; $i++) {
-                array_push($this->crib_animbals, new chicken());
-            }
-        } else {
-            echo 'undefined type of animal';
+
+        for ($i = 0; $i < $number; $i++) {
+            $this->add_animal($type, $animal_possible_min_viand, $animal_possible_max_viand);
         }
+
     }
+
 
     public function list_all_animals()
     {

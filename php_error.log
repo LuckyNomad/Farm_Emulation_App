@@ -1,0 +1,20 @@
+
+[09-Sep-2019 21:22:56 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function animal::get_viand(), 0 passed in D:\laravel\farm_test_app\collector\collector.php on line 19 and exactly 2 expected in D:\laravel\farm_test_app\crib\animals.php:43
+Stack trace:
+#0 D:\laravel\farm_test_app\collector\collector.php(19): animal->get_viand()
+#1 D:\laravel\farm_test_app\collector\collector.php(33): collector->process_animal(Object(animal))
+#2 D:\laravel\farm_test_app\main.php(21): collector->process_all_animals_in_crib(Object(crib_space))
+#3 {main}
+  thrown in D:\laravel\farm_test_app\crib\animals.php on line 43
+[09-Sep-2019 21:27:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method collector::get_animal_possible_min_viand() in D:\laravel\farm_test_app\collector\collector.php:21
+Stack trace:
+#0 D:\laravel\farm_test_app\collector\collector.php(36): collector->process_animal(Object(cow))
+#1 D:\laravel\farm_test_app\main.php(21): collector->process_all_animals_in_crib(Object(crib_space))
+#2 {main}
+  thrown in D:\laravel\farm_test_app\collector\collector.php on line 21
+[09-Sep-2019 21:27:40 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method collector::get_animal_possible_min_viand() in D:\laravel\farm_test_app\collector\collector.php:21
+Stack trace:
+#0 D:\laravel\farm_test_app\collector\collector.php(36): collector->process_animal(Object(cow))
+#1 D:\laravel\farm_test_app\main.php(21): collector->process_all_animals_in_crib(Object(crib_space))
+#2 {main}
+  thrown in D:\laravel\farm_test_app\collector\collector.php on line 21

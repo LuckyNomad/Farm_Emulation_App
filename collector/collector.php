@@ -8,22 +8,21 @@ class collector
     {
         $this->animals_processed = 0;
         $this->successfully_processed_animals = 0;
-        $this->eggs_number_received = 0;
-        $this->milk_litres_received = 0;
+        $this->viand_received = [];
     }
 
     public function process_animal($animal)
     {
         $this->animals_processed++;
         if ($animal->isViandReceived === false) {
-            $this->successfully_processed_animals++;
-            if ($animal->animal_kind === 'cow') {
-                $current_cow_milk_litres_received = $animal->get_viand();
-                $this->milk_litres_received += $current_cow_milk_litres_received;
-            } else if ($animal->animal_kind === 'chicken') {
-                $current_chicken_eggs_number_received = $animal->get_viand();
-                $this->eggs_number_received += $current_chicken_eggs_number_received;
+            if (class_exists('new ' . $animal->animal_kind) || class_exists($animal->animal_kind)) {
+                $viand = $animal->get_viand();
+            }else{
+                $viand = $animal->get_viand($animal->get_animal_possible_min_viand(), $animal->get_animal_possible_max_viand());
             }
+            $this->successfully_processed_animals++;
+            $this->viand_received[$animal->animal_kind] += $viand;
+
         } else {
             echo 'Failed! Viand already received \n';
         }
@@ -41,6 +40,9 @@ class collector
 
     public function get_process_info()
     {
-        echo "Animals processed: $this->animals_processed ;\nAnimals successfully processed: $this->successfully_processed_animals ;\nEggs received:  $this->eggs_number_received ;\nMilk litres received: $this->milk_litres_received ;\n";
+        echo "Animals processed: $this->animals_processed ;\nAnimals successfully processed: $this->successfully_processed_animals ;\n";
+        foreach ($this->viand_received as $animal_type => $animal_viand_received){
+            echo "Animal type: ".$animal_type."; Viand received:". $animal_viand_received.";\n";   
+        }
     }
 }
